@@ -14,7 +14,12 @@ public class LoginPage
     private ILocator LoginButton => _page.Locator("text=Log in");
     private ILocator EmployeeListLink => _page.Locator("text=Employee List");
 
-    public async Task ClickLogin() => await LoginLink.ClickAsync();
+    public async Task ClickLoginLink()
+    {
+        await LoginLink.ClickAsync();
+        await _page.WaitForURLAsync("**/Login");
+        
+    }
 
     public async Task Login(string userName, string password)
     {
